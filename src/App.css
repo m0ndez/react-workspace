@@ -17,7 +17,8 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: row; */
+  justify-content: space-around;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -26,6 +27,49 @@
 
 .App-link {
   color: #61dafb;
+}
+/* 
+input:focus{
+  outline:none;
+  background-color: transparent;
+
+} */
+
+input[type=text]{
+  background-color: transparent;
+}
+
+input[type=text]:focus{
+  background-color: transparent;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+td{
+  color: white;
+}
+
+.w1{
+  width: 100vw;
+}
+
+.t-bold {
+  font-weight: bold;
+}
+
+.t-green {
+  color: #27a844;
+}
+
+.t-yell {
+color:yellow;
+}
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.t-ping {
+  display: none;
 }
 
 @keyframes App-logo-spin {

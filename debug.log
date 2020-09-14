@@ -1,0 +1,21 @@
+[0914/014837.868:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)
+[0914/201553.538:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0914/201553.538:ERROR:exception_snapshot_win.cc(99)] thread ID 18408 not found in process
+[0914/201553.554:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0914/201553.554:ERROR:exception_snapshot_win.cc(99)] thread ID 18224 not found in process
+[0914/201553.554:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0914/201553.554:ERROR:exception_snapshot_win.cc(99)] thread ID 25436 not found in process
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0914/201553.554:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0914/201553.554:ERROR:exception_snapshot_win.cc(99)] thread ID 22748 not found in process
+[0914/201553.570:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0914/201553.570:ERROR:exception_snapshot_win.cc(99)] thread ID 14216 not found in process
+[0914/202534.438:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)
+[0914/212911.487:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)
+[0914/221222.579:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)
