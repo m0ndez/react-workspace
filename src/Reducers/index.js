@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import deleteReducer from "./deleteReducer";
 import postReducer from './postReducer'
+import selectReducer from './selectReducer'
 
 export default combineReducers({
     posts: postReducer,
-    select: deleteReducer
+    select: selectReducer,
 }) 

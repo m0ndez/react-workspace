@@ -5,53 +5,51 @@ import { fetchPosts, selectData } from '../Actions'
 // import './App.css';
 
 class Todo extends Component {
+    constructor(props){ 
+        super(props)
+        this.renderList.bind(this)
+
+    }
 
     componentDidMount() {
+        this.renderList()
         // this.props.fetchPosts()
        
     }
     componentDidUpdate() {
-        // console.log(this.props);
+        this.renderList()
     }
 
 
     renderList() {
         return this.props.posts.map(post => {
             return (
-                <tr key={post.id}>
-                   <td className="border-0"  onClick={
-
-                       () => this.props.selectData(post.title,post.activity)
-                       }>
+                <ul key={post.id} style={{cursor:'pointer'}}
+                onClick={() => 
+                    this.props.selectData(post.title,post.id,true)
+                    }>
+                   <li className="border-0">
                  <span style={{color:'red'}}>Todo:</span> {post.title}
-                 </td>
-                </tr>
+                 </li>
+                </ul>
             )
-        })
-      
+        }) 
     }
   
     render() {
         return (
             <div className="jumbotron pt-3">
-            <label >Todo Lists</label>
-         <table className="table">
-             <thead>
-             </thead>
-             <tbody>
-               {this.renderList()}
-             </tbody>
-         </table>
+            <label className="badge badge-danger" >Todo Lists</label>
+            {this.renderList()}
         </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log(state);
+    // console.log(state);
     return {
-        posts : state.posts,
-        select: state.select
+        posts : state.posts
         
     }
 }

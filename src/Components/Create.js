@@ -2,28 +2,56 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import logo from './logo.svg';
 import "../App.css";
+import Delete from "../Buttons/Delete";
+import { onPost } from "../Actions/index";
 
 class Create extends Component {
-  focustext = false;
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const todo = this.getTodo.value;
+  constructor(props) {
+    super(props);
+    this.state = {
+      task: "",
+      type: false,
+    };
+    this.onType.bind(this);
+    this.handleSubmit.bind(this);
+  }
 
+  // Onyping 
+  onType = (e) => {
+    // Typing...
+    e.target.value !== ""
+      ? this.setState({
+          type: true,
+          task: e.target.value,
+        })
+      : this.setState({
+          type: false,
+          task: e.target.value,
+        });
+    // console.log(this.state)
+  };
+
+  // Onpost
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       id: new Date(),
+      title: this.state["task"],
       body: "",
-      title: todo,
       userId: new Date(),
-      activity: `Created ${todo}`,
+      selecter: false,
     };
-    console.log(data);
-    this.props.dispatch({
-      type: "ADD_POST",
-      data,
-    });
 
+    await this.props.onPost(data);
     // Variable
-    this.getTodo.value = "";
+    this.setState({
+      task: "",
+      type: false,
+    });
+  };
+
+  componentDidUpdate = () => {
+    // this.onType()
   };
 
   render() {
@@ -33,31 +61,37 @@ class Create extends Component {
           <label className="t-green">Task name </label>
           <input
             type="text"
-            style={{ color: "white" }}
-            ref={(input) => (this.getTodo = input)}
+            style={{ color: "white", fontWeight: "bold" }}
+            value={this.state["task"]}
+            onChange={this.onType}
             className="form-control mb-2 border-success"
           ></input>
-          <span className={this.getTodo !== "" ? "t-ping" : "t-yell"}>
-            Typing . .{" "}
+
+          <span
+            style={
+              this.state["type"] === false
+                ? { visibility: "hidden" }
+                : { color: "yellow" }
+            }
+          >
+            Typing . .
           </span>
           <center>
             <div>
               <button
+                disabled={this.state["type"] === true ? false : true}
                 type="submit"
                 className="btn btn-outline-success btn-lg t-bold mb-1"
               >
                 Save
               </button>
               <br></br>
-              <button
-                type="reset"
-                className="btn btn-outline-danger btn-lg t-bold"
-              >
-                Delete
-              </button>
             </div>
           </center>
         </form>
+        <center>
+          <Delete aa={this.props.select} />
+        </center>
       </div>
     );
   }
@@ -71,4 +105,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Create);
+export default connect(mapStateToProps, { onPost })(Create);
