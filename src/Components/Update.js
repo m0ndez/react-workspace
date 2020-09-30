@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 // import logo from './logo.svg';
 import "../App.css";
 import Delete from "../Buttons/Delete";
-import Update from "../Buttons/Update.js"
 import { onPost } from "../Actions/index";
 
-class Create extends Component {
+class Update extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,9 +50,11 @@ class Create extends Component {
     });
   };
 
+  
+
+
   componentDidUpdate = () => {
     // this.onType()
-
   };
 
   render() {
@@ -64,7 +65,7 @@ class Create extends Component {
           <input
             type="text"
             style={{ color: "white", fontWeight: "bold" }}
-            value={this.state === '' ? this.props.select.title : this.state["task"]}
+            value={this.state["task"]}
             onChange={this.onType}
             className="form-control mb-2 border-success"
           ></input>
@@ -93,7 +94,6 @@ class Create extends Component {
         </form>
         <center>
           <Delete aa={this.props.select} />
-          <Update/>
         </center>
       </div>
     );
@@ -108,4 +108,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { onPost })(Create);
+export default connect(mapStateToProps, { onPost })(Update);

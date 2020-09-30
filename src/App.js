@@ -1,11 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 // import logo from './logo.svg';
 import "./App.css";
 import Activity from "./Components/Activitiy";
 import Create from "./Components/Create";
 import Todo from "./Components/Todo";
 
+
 class App extends React.Component {
+
+  componentDidUpdate(){
+    // console.log(this.props);
+  }
+
   render() {
     return (
       <div className="App-header">
@@ -15,6 +22,7 @@ class App extends React.Component {
           </div>
           <div className="col col-md-4">
             <Create />
+            
           </div>
           <div className="col col-md-4">
             <Activity />
@@ -25,4 +33,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  // console.log(state.posts);
+  return {
+    posts: state.posts,
+    select: state.select,
+  };
+};
+
+export default connect(mapStateToProps)(App);

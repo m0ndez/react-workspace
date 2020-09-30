@@ -51,7 +51,7 @@ class Activity extends Component {
     return (
       <div className="jumbotron pt-3">
         <label style={ {cursor: 'pointer'} } className="badge badge-primary" onClick={() => this.setState({ cbo: !this.state.cbo })}>
-          Todo Lists
+          Activity Lists
         </label>
         {/* {this.onSelect()} */}
         {this.state.cbo === true ? this.renderList() : this.onSelect()}

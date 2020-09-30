@@ -29,3 +29,5 @@
 [0914/230915.424:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [0914/230915.424:ERROR:exception_snapshot_win.cc(99)] thread ID 1792 not found in process
 [0914/230915.424:ERROR:exception_snapshot_win.cc(99)] thread ID 16928 not found in process
+[0927/152959.044:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)
+[0927/175410.193:ERROR:registration_protocol_win.cc(103)] CreateFile: The system cannot find the file specified. (0x2)

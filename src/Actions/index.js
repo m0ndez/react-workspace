@@ -7,12 +7,12 @@ export const fetchPosts = () => async (dispatch) => {
 };
 
 // Create
-export const onPost = (data) => async (dispatch) => {
-  await dispatch({ type: "ADD_POST", data });
+export const onPost = (data) =>  (dispatch) => {
+   dispatch({ type: "ADD_POST", data });
 };
 
 // Select
-export const selectData = (title, userId) => async (dispatch) => {
+export const selectData = (title, userId, Sw) => async (dispatch) => {
   await dispatch({
     type: "SELECT_DATA",
     payload: {
@@ -20,6 +20,7 @@ export const selectData = (title, userId) => async (dispatch) => {
       id: userId,
       body: "",
       userId: userId,
+      isEdit: Sw,
 
       create: title,
       select: title,
@@ -28,6 +29,11 @@ export const selectData = (title, userId) => async (dispatch) => {
     },
   });
 };
+// Update
+export const onUpdate = (data) => (dispatch) => {
+   dispatch({ type: "UPDATE_POST", data });
+
+} 
 
 // Delete
 export const onDelete = (data) => async (dispatch) => {
