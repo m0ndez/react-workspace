@@ -15,7 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App-header">
+      <div className="App-header">  
         <div className="row row-md px-4 mx-4 w1 ">
           <div className="col col-md-4">
             <Todo />

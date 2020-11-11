@@ -5,31 +5,31 @@ import { fetchPosts, selectData } from '../Actions'
 // import './App.css';
 
 class Todo extends Component {
-    constructor(props){ 
+    constructor(props) {
         super(props)
-        this.renderList.bind(this)
-
+        this.state = {
+            id:'',
+            task:'',
+            status:'',
+            status2:''
+        }
     }
-
-    componentDidMount() {
-        this.renderList()
-        // this.props.fetchPosts()
-       
+    componentDidUpdate(){
+        this.state !== this.setState&&this.props.selectData(this.state.id,this.state.task,this.state.status,this.state.status2)
     }
-    componentDidUpdate() {
-        this.renderList()
-    }
-
-
+    
+    // this.props.selectData(post.task,post.id,post.status,`Selected ${post.task}`)
     renderList() {
         return this.props.posts.map(post => {
             return (
                 <ul key={post.id} style={{cursor:'pointer'}}
-                onClick={() => 
-                    this.props.selectData(post.title,post.id,true)
-                    }>
-                   <li className="border-0">
-                 <span style={{color:'red'}}>Todo:</span> {post.title}
+                    >
+                   <li className="border-0"
+                    onClick={() => 
+                        this.setState({id:post.id,task:post.task,status:post.status,status2:`Selected ${post.task}`})}
+                        onBlur={() => this.setState({id:'',task:'',status:'',status2:''})}
+                    >
+                 <span style={{color:'red'}}>Todo:</span> {post.task}
                  </li>
                 </ul>
             )
@@ -47,7 +47,6 @@ class Todo extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log(state);
     return {
         posts : state.posts
         

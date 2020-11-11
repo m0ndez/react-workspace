@@ -1,87 +1,70 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import logo from './logo.svg';
 import "../App.css";
-import Delete from "../Buttons/Delete";
-import Update from "../Buttons/Update.js"
+// import Delete from "../Buttons/Delete";
+// import Update from "../Buttons/Update.js"
 import { onPost } from "../Actions/index";
+import "../App.css";
 
 class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      task: "",
-      type: false,
-    };
-    this.onType.bind(this);
-    this.handleSubmit.bind(this);
+     id: '',
+     task: '',
+     status: ''
+    }
+
   }
 
-  // Onyping 
-  onType = (e) => {
-    // Typing...
-    e.target.value !== ""
-      ? this.setState({
-          type: true,
-          task: e.target.value,
-        })
-      : this.setState({
-          type: false,
-          task: e.target.value,
-        });
-    // console.log(this.state)
-  };
-
-  // Onpost
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      id: new Date(),
-      title: this.state["task"],
-      body: "",
-      userId: new Date(),
-      selecter: false,
-    };
-
-    await this.props.onPost(data);
-    // Variable
+  onChangeTask = (e) => {
     this.setState({
-      task: "",
-      type: false,
-    });
-  };
+      id: new Date(),
+      task: e.target.value,
+      status:`Created User ${e.target.value}`
+    })
+  }
 
-  componentDidUpdate = () => {
-    // this.onType()
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      id: this.state.id,
+      task: this.state.task,
+      status: this.state.status
+    }
+   this.props.onPost(data)
 
-  };
+   this.setState({
+     id:'',
+     task:'',
+     status:''
+   })
+  }
 
-  render() {
+  onCreateRender = () => {
     return (
-      <div className=" container  form-group">
+      <div className="container  form-group">
         <form className="form" onSubmit={this.handleSubmit}>
           <label className="t-green">Task name </label>
           <input
             type="text"
             style={{ color: "white", fontWeight: "bold" }}
-            value={this.state === '' ? this.props.select.title : this.state["task"]}
-            onChange={this.onType}
+            // value={this.state === '' ? this.props.select.title : this.state["task"]}
             className="form-control mb-2 border-success"
-          ></input>
+            value={this.state.task}
+            onChange={this.onChangeTask}
+            onBlur={() => this.state.task === ''}
 
+          ></input>
           <span
-            style={
-              this.state["type"] === false
-                ? { visibility: "hidden" }
-                : { color: "yellow" }
-            }
-          >
+          style={{visibility:this.state.task ===''&&'hidden'}}
+          className="t-yell">
             Typing . .
           </span>
           <center>
             <div>
               <button
-                disabled={this.state["type"] === true ? false : true}
+                disabled={this.state.task === ''}
                 type="submit"
                 className="btn btn-outline-success btn-lg t-bold mb-1"
               >
@@ -92,19 +75,29 @@ class Create extends Component {
           </center>
         </form>
         <center>
-          <Delete aa={this.props.select} />
-          <Update/>
+          {/* <Delete aa={this.props.select} />
+          <Update/> */}
         </center>
       </div>
+    )
+  }
+
+  onEditRender() {
+  }
+
+  render() {
+    const Create = this.onCreateRender;
+    return (
+      <>
+      <Create />
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state.select);
   return {
-    posts: state.posts,
-    select: state.select,
+    posts: state.posts
   };
 };
 

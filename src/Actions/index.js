@@ -7,25 +7,19 @@ export const fetchPosts = () => async (dispatch) => {
 };
 
 // Create
-export const onPost = (data) =>  (dispatch) => {
-   dispatch({ type: "ADD_POST", data });
+export const onPost = (data) => (dispatch) => {
+   dispatch({ type: "ADD_POST", data});
 };
 
 // Select
-export const selectData = (title, userId, Sw) => async (dispatch) => {
+export const selectData = (id,task,status,status2) => async (dispatch) => {
   await dispatch({
     type: "SELECT_DATA",
     payload: {
-      title: title,
-      id: userId,
-      body: "",
-      userId: userId,
-      isEdit: Sw,
-
-      create: title,
-      select: title,
-      delete: title,
-      selecter: undefined,
+     id:id === '' && undefined,
+     task:task,
+     status:status,
+     status2:status2
     },
   });
 };
